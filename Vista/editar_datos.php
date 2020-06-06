@@ -29,7 +29,7 @@ include_once 'layouts/nav.php';
        <div class="modal-body">
          <div class="text-center">
            <!--Porcion de codigo el cual nos devuelve el nombre y trae el avatar a nuestro modal-->
-           <img src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+           <img id="avatar3" src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
          </div>
          <div class="text-center">
            <b>
@@ -69,7 +69,7 @@ include_once 'layouts/nav.php';
 
  <!--================================== Modal que interactua con cambiar avatar ================================== -->
 
- <div class="modal fade" id="cambiofoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="cambiophoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog">
      <div class="modal-content">
        <div class="modal-header">
@@ -81,22 +81,22 @@ include_once 'layouts/nav.php';
        <div class="modal-body">
          <div class="text-center">
            <!--Porcion de codigo el cual nos devuelve el nombre y trae el avatar a nuestro modal-->
-           <img src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+           <img id="avatar1" src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
          </div>
          <div class="text-center">
            <b>
              <?php echo $_SESSION['nombre_us']; ?>
            </b>
          </div>
-         <div class="alert alert-success text-center" id="update" style='display:none;'>
-            <span><i class="fas fa-check"></i>Contraseña Actualizada</span>
+         <div class="alert alert-success text-center" id="edit" style='display:none;'>
+            <span><i class="fas fa-check"></i>Avatar Actualizado</span>
          </div>
-         <div class="alert alert-danger text-center" id="noupdate" style='display:none;'>
-            <span><i class="fas fa-times"></i>No se pudo cambiar contraseña</span>
+         <div class="alert alert-danger text-center" id="noedit" style='display:none;'>
+            <span><i class="fas fa-times"></i>Formato no Compatible</span>
          </div>
-         <form id="form-foto" enctype="multipart/form-data"> <!--para que el formulario admita fotos-->
+         <form id="form-photo" enctype="multipart/form-data"> <!--para que el formulario admita fotos-->
            <div class="input-group mb-3 mb-3 ml-5 mt-2">
-              <input type="file" name="foto" class="input-group">
+              <input type="file" name="photo" class="input-group">
               <input type="hidden" name="funcion" value="cambiar_foto">
            </div>
        </div>
@@ -138,10 +138,10 @@ include_once 'layouts/nav.php';
                <div class="card card-success card-outline">
                  <div class="card-body box-profile">
                    <div class="text-center">
-                     <img src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+                     <img id="avatar2" src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
                    </div>
                    <div class="text-center mt-1">
-                      <button type="button" data-toggle="modal" data-target="#cambiofoto" class="btn btn-primary btn-sm">Cambiar Avatar</button>
+                      <button type="button" data-toggle="modal" data-target="#cambiophoto" class="btn btn-primary btn-sm">Cambiar Avatar</button>
                    </div>
                    <!-- hidden es de tipo oculto-->
                    <input id="id_usuario" type="hidden" value="<?php echo $_SESSION['usuario']; ?>">

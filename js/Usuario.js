@@ -41,6 +41,10 @@ $(document).ready(function() {
       $('#residencia_us').html(residencia);
       $('#correo_us').html(correo);
       $('#sexo_us').html(sexo);
+      $('#avatar2').attr('src',usuario.avatar);
+      $('#avatar1').attr('src',usuario.avatar);
+      $('#avatar3').attr('src',usuario.avatar);
+      $('#avatar4').attr('src',usuario.avatar);
     })
   }
   //capturar el evento click de una clase llamada 'edit' existente en en el boton de editar
@@ -70,6 +74,7 @@ $(document).ready(function() {
                   $('#editado').show(1000);
                   $('#editado').hide(2000);
                   $('#form-usario').trigger('reset');
+
               }
               edit=false;
               //llamando a esta funcion conseguimos que cada vez que actualizamos los datos se actualize nuestra tarjeta.
@@ -119,6 +124,34 @@ $(document).ready(function() {
       e.preventDefault();
     })
 
-    $('#form-foto')
+    $('#form-photo').submit(e=>{
+      let formData = new FormData($('#form-photo')[0]);
+      $.ajax({
+        url:'../Controlador/usuario_controller.php',
+        type:'POST',
+        data:formData,
+        cache:false,
+        processData:false,
+        contentType:false
+      }).done(function(response){
+        //se obtienen los avatares nuevos para el perfil...
+          const json = JSON.parse(response);
+          if(json.alert=='edit') {
+            $('#avatar1').attr('src',json.ruta);
+            $('#edit').hide('slow');
+            $('#edit').show(1000);
+            $('#edit').hide(2000);
+            $('#form-photo').trigger('reset');
+            buscar_usuario(id_usuario);
+          }
+          else {
+            $('#noedit').hide('slow');
+            $('#noedit').show(1000);
+            $('#noedit').hide(2000);
+            $('#form-photo').trigger('reset');
+          }
+      });
+      e.preventDefault();
+    })
 
 })

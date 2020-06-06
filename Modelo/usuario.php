@@ -60,5 +60,38 @@ class Usuario{
       echo 'noupdate';
     }
   }
+//funcion proveniente de usuario_controller el cual permite cambiar imagen de avatar.
+//Lo que se hace primero es borrar las fotos repetidas para despues si
+  function cambiar_photo($id_usuario,$nombre){
+    $sql="SELECT avatar FROM usuario where id_usuario=:id";
+    $query = $this->acceso->prepare($sql);
+    $query->execute(array(':id'=>$id_usuario));
+    $this->objetos= $query->fetchall();
+
+    $sql="UPDATE usuario SET avatar=:nombre where id_usuario=:id";
+    $query = $this->acceso->prepare($sql);
+    $query->execute(array(':id'=>$id_usuario,':nombre'=>$nombre));
+  return $this->objetos;
+  }
+
+// FUNCION QUE PERMITE BUSCAR USUARIOS
+  function buscar(){
+    if (!empty($_POST['consulta'])){
+        $consulta=$_POST['consulta'];
+        $sql="SELECT * FROM usuario join tipo_us on us_tipo=id_tipo_us where nombre_us LIKE :consulta";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':consulta'=>"%$consulta%"));
+        $this->objetos=$query->fetchall();
+        return $this->objetos;
+    }
+    else {
+      //SI NO TECLEO NADA ME MOSTRARA TODOS LOS USUARIOS.
+      $sql="SELECT * FROM usuario join tipo_us on us_tipo=id_tipo_us where nombre_us NOT LIKE '' ORDER BY id_usuario LIMIT 25";
+      $query = $this->acceso->prepare($sql);
+      $query->execute();
+      $this->objetos=$query->fetchall();
+      return $this->objetos;
+    }
+  }
 }
  ?>
