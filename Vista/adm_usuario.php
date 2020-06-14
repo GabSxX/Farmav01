@@ -14,8 +14,53 @@
 include_once 'layouts/nav.php';
  ?>
 
+ <!--==================================Modal que interactua con confirmar cambios================================== -->
 
+ <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">CONFIRMAR ACCION</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <div class="text-center">
+           <!--Porcion de codigo el cual nos devuelve el nombre y trae el avatar a nuestro modal-->
+           <img id="avatar3" src="../img/5ed47d6e570ee-user2-160x160.jpg" class="profile-user-img img-fluid img-circle">
+         </div>
+         <div class="text-center">
+           <b>
+             <?php echo $_SESSION['nombre_us']; ?>
+           </b>
+         </div>
+         <div class="alert alert-success text-center" id="confirmado" style='display:none;'>
+            <span><i class="fas fa-check"></i>Eliminado</span>
+         </div>
+         <div class="alert alert-danger text-center" id="rechazado" style='display:none;'>
+            <span><i class="fas fa-times"></i>Contraseña Incorrecta</span>
+         </div>
+         <form id="form-confirmar">
+           <div class="input-group mb-3">
+             <div class="input-group-prepend">
+               <span class="input-group-text" ><i class="fas fa-unlock-alt"></i></span>
+             </div>
+             <input type="password" id="oldpass" class="form-control" placeholder="Ingrese contraseña actual">
+             <input type="hidden" id="id_user">
+             <input type="hidden" id="funcion">
+           </div>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+         <button type="submit" class="btn bg-gradient-primary">Eliminar</button>
+       </form>
+       </div>
+     </div>
+   </div>
+ </div>
 
+ <!--==================================Modal================================== -->
 
  <!--==================================Modal que interactua con crear personal================================== -->
 
@@ -32,6 +77,14 @@ include_once 'layouts/nav.php';
         </div>
  <!--==================================================================== -->
         <div class="card-body">
+
+          <div class="alert alert-success text-center" id="agregado" style='display:none;'>
+             <span><i class="fas fa-check"></i>Usuario Agregado</span>
+          </div>
+          <div class="alert alert-danger text-center" id="no_agregado" style='display:none;'>
+             <span><i class="fas fa-times"></i>No pueden existir usuarios con el mismo DNI</span>
+          </div>
+
           <form id="form-crear" >
             <div class="form-group">
               <label for="nombre">Nombres</label>
@@ -78,7 +131,8 @@ include_once 'layouts/nav.php';
        <div class="container-fluid">
          <div class="row mb-2">
            <div class="col-sm-6">
-             <h1>Gestion Usuarios <button type="button" data-toggle="modal" data-target="#crearusuario" class="btn bg-gradient-primary ml-2">Crear Usuario</button></h1>
+             <h1>Gestion Usuarios <button id="button-crear" type="button" data-toggle="modal" data-target="#crearusuario" class="btn bg-gradient-primary ml-2">Crear Usuario</button></h1>
+              <input type="hidden" id="tipo_usuario" value="<?php echo $_SESSION['us_tipo']; ?>">
            </div>
            <div class="col-sm-6">
              <ol class="breadcrumb float-sm-right">
@@ -103,7 +157,7 @@ include_once 'layouts/nav.php';
         </div>
         <div class="card-body">
           <div id="usuarios" class="row d-flex align-items-stretch">
-            
+
           </div>
         </div>
         </div>

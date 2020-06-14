@@ -24,7 +24,8 @@ if($_POST['funcion'] == 'buscar_usuario'){
       'residencia'=>$objeto->residencia_us,
       'correo'=>$objeto->correo_us,
       'sexo'=>$objeto->sexo_us,
-      'avatar'=>'../img/'.$objeto->avatar
+      'avatar'=>'../img/'.$objeto->avatar,
+      'tipo_usuario'=>$objeto->us_tipo
     );
   }
   /*Lo que hace json_encode es que nos devuelve un json codificado y lo convierte en string para poder usarlo en nuestro JS
@@ -116,6 +117,7 @@ if($_POST['funcion']=='buscar_usuarios_adm'){
     $edad = $nacimiento->diff($fecha_actual);
     $edad_years = $edad->y;
     $json[]=array(
+      'id'=>$objeto->id_usuario,
       'nombre'=>$objeto->nombre_us,
       'apellidos'=>$objeto->apellidos_us,
       'edad'=>$edad_years,
@@ -131,5 +133,22 @@ if($_POST['funcion']=='buscar_usuarios_adm'){
 
     $jsonstring = json_encode($json);
     echo $jsonstring;
+ }
+ if($_POST['funcion']=='crear_usuario'){
+      $nombre = $_POST['nombre'];
+      $ape= $_POST['ape'];
+      $edad = $_POST['edad'];
+      $dni = $_POST['dni'];
+      $pass = $_POST['pass'];
+      $tipo=2;
+      $avatar='avatar.png';
+      $usuario->crear($nombre,$ape,$edad,$dni,$pass,$tipo,$avatar);
+ }
+
+ if ($_POST['funcion']=='borrar_usuario'){
+   // code...
+   $pass=$_POST['pass'];
+   $id_borrado=$_POST['id_usuario'];
+   $usuario->borrar($pass,$id_borrado,$id_usuario);
  }
  ?>
