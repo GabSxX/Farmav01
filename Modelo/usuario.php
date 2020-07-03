@@ -1,5 +1,5 @@
 <?php
-include_once 'Conexion.php';
+include_once 'conexion.php';
 class Usuario{
   //cada vez que instanciamos una variable tipo usuario automaticamente hacemos la conexion pdo
   var $objetos;
@@ -19,7 +19,15 @@ class Usuario{
     //el metodo de loguearse nos retornara un obejeto.
     return $this->objetos;
   }
-
+  //==================================CLIENTE====================================================================
+  function Logueo_cliente($PER_USERNAME,$PER_PASSWORD){
+    $sql="SELECT * FROM persona where PER_USERNAME=:PER_USERNAME and PER_PASSWORD=:PER_PASSWORD";
+    $query = $this->acceso->prepare($sql);
+    $query->execute(array(':PER_USERNAME'=>$PER_USERNAME,':PER_PASSWORD'=>$PER_PASSWORD));
+    $this->objetos= $query->fetchall();
+    return $this->objetos;
+  }
+  //==================================CLIENTE====================================================================
   function obtener_datos($id){
     //se realiza la union de las tablas para identificar que tipo de usuario ingresa
     $sql="SELECT * FROM usuario join tipo_us on us_tipo = id_tipo_us and id_usuario = :id";
@@ -40,7 +48,7 @@ class Usuario{
     $query->execute(array(':id'=>$id_usuario,':telefono'=>$telefono,':residencia'=>$residencia,':correo'=>$correo,':sexo'=>$sexo));
   }
 
-//funcion proveniente de usuario_controller el cual permite la actualizacion de la Contraseña
+  //funcion proveniente de usuario_controller el cual permite la actualizacion de la Contraseña
   function cambiar_contra($id_usuario,$oldpass,$newpass){
     $sql="SELECT * FROM usuario where id_usuario=:id and contrasena_us=:oldpass";
     //Esto se cumplira siempre y cuando el id_usuario = a id (update de datos)
@@ -60,8 +68,8 @@ class Usuario{
       echo 'noupdate';
     }
   }
-//funcion proveniente de usuario_controller el cual permite cambiar imagen de avatar.
-//Lo que se hace primero es borrar las fotos repetidas para despues si
+  //funcion proveniente de usuario_controller el cual permite cambiar imagen de avatar.
+  //Lo que se hace primero es borrar las fotos repetidas para despues si
   function cambiar_photo($id_usuario,$nombre){
     $sql="SELECT avatar FROM usuario where id_usuario=:id";
     $query = $this->acceso->prepare($sql);
@@ -74,7 +82,7 @@ class Usuario{
   return $this->objetos;
   }
 
-// FUNCION QUE PERMITE BUSCAR USUARIOS
+  // FUNCION QUE PERMITE BUSCAR USUARIOS
   function buscar(){
     if (!empty($_POST['consulta'])){
         $consulta=$_POST['consulta'];
@@ -128,5 +136,25 @@ class Usuario{
         echo "noborrado";
     }
   }
+
+  //==================================================FUNCION DE CLIENTE==================================================================================
+  function crearCli($PER_NOMBRE,$PER_APELLIDO,$PER_FECHA_NACIMIENTO,$PER_EMAIL,$PER_USERNAME,$PER_PASSWORD,$autom){
+    $sql="SELECT PER_ID_PERSONA FROM persona where PER_USERNAME=:PER_USERNAME";
+    $query = $this->acceso->prepare($sql);
+    $query->execute(array(':PER_USERNAME'=>$PER_USERNAME));
+    $this->objetos=$query->fetchall();
+    if (!empty($this->objetos)){
+      echo 'noadd';
+    }
+    else {
+      // code...
+      $sql="INSERT INTO persona(PER_NOMBRE,PER_APELLIDO,PER_FECHA_NACIMIENTO,PER_EMAIL,PER_USERNAME,PER_PASSWORD,autom) VALUES (:PER_NOMBRE,:PER_APELLIDO,:PER_FECHA_NACIMIENTO,:PER_EMAIL,:PER_USERNAME,:PER_PASSWORD,:autom);";
+      $query = $this->acceso->prepare($sql);
+      $query->execute(array(':PER_NOMBRE'=>$PER_NOMBRE,':PER_APELLIDO'=>$PER_APELLIDO,':PER_FECHA_NACIMIENTO'=>$PER_FECHA_NACIMIENTO,':PER_EMAIL'=>$PER_EMAIL,':PER_USERNAME'=>$PER_USERNAME,':PER_PASSWORD'=>$PER_PASSWORD,':autom'=>$autom));
+      echo 'add';
+    }
+  }
+  //==================================================FUNCION DE CLIENTE==================================================================================
+
 }
  ?>

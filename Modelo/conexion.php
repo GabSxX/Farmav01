@@ -1,7 +1,7 @@
 <?php
 class conexion{
     private $servidor = "localhost";
-    private $db = "farmafastv01";
+    private $db = "farmacia";
     private $puerto = "3306";
     private $charset = "utf8"; //Español
     private $usuario = "root";

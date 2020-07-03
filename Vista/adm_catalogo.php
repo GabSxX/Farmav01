@@ -48,7 +48,7 @@ include_once 'layouts/nav.php';
            </div>
          </div>
          <div class="card-body">
-           Start creating your amazing application!
+           Farma-Fast 4Ever
          </div>
          <!-- /.card-body -->
          <div class="card-footer">
@@ -69,3 +69,5 @@ include_once 'layouts/footer.php';
     header('Location: ../index.php');
   }
  ?>
+
+<script src="../js/Usuario.js"></script>

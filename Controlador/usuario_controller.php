@@ -3,7 +3,7 @@ include_once '../modelo/usuario.php';
 
 $usuario = new Usuario();
 session_start();
-$id_usuario=$_SESSION['usuario'];
+$id_usuario= $_SESSION['usuario'];
 if($_POST['funcion'] == 'buscar_usuario'){
   /*Se realiza el Json que sera retornado en nuestro JS, mediante eso obtenemos todos los datos que nosotros queremos*/
   $json=array();
@@ -151,4 +151,22 @@ if($_POST['funcion']=='buscar_usuarios_adm'){
    $id_borrado=$_POST['id_usuario'];
    $usuario->borrar($pass,$id_borrado,$id_usuario);
  }
+
+//========================== Lado del Cliente (BETA) ======================
+ 
+if($_POST['funcion']=='cliente'){
+  $PER_NOMBRE = $_POST['PER_NOMBRE'];
+  $PER_APELLIDO= $_POST['PER_APELLIDO'];
+  $PER_FECHA_NACIMIENTO = $_POST['PER_FECHA_NACIMIENTO'];
+  $PER_EMAIL = $_POST['PER_EMAIL'];
+  $PER_USERNAME = $_POST['PER_USERNAME'];
+  $PER_PASSWORD = $_POST['PER_PASSWORD'];
+  $autom = $_POST['autom'];
+
+
+  $usuario->crearCli($PER_NOMBRE,$PER_APELLIDO,$PER_FECHA_NACIMIENTO,$PER_EMAIL,$PER_USERNAME,$PER_PASSWORD,$autom);
+}
+
+ 
+ 
  ?>

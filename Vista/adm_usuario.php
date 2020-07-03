@@ -28,7 +28,7 @@ include_once 'layouts/nav.php';
        <div class="modal-body">
          <div class="text-center">
            <!--Porcion de codigo el cual nos devuelve el nombre y trae el avatar a nuestro modal-->
-           <img id="avatar3" src="../img/5ed47d6e570ee-user2-160x160.jpg" class="profile-user-img img-fluid img-circle">
+           <img id="avatar3" src="../img/5eed57ff3169d-ferre323.png" class="profile-user-img img-fluid img-circle">
          </div>
          <div class="text-center">
            <b>
@@ -68,7 +68,6 @@ include_once 'layouts/nav.php';
    <div class="modal-dialog">
      <div class="modal-content">
       <div class="card card-success">
-
         <div class="card-header">
         <h3 class="card-title">Crear Personal</h3>
         <button data-dismiss="modal" aria-label="close" class="close">

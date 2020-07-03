@@ -30,6 +30,7 @@ if (!empty($_SESSION['us_tipo'])) {
       $_SESSION['usuario']=$objeto->id_usuario;
       $_SESSION['us_tipo']=$objeto->us_tipo;
       $_SESSION['nombre_us']=$objeto->nombre_us;
+      
     }
     //se verifica que tipo de usuario inicio sesion y se redirecciona a la vista indicada
     switch ($_SESSION['us_tipo']) {

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Farma-Fast</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://kit.fontawesome.com/a8a5a12063.js" crossorigin="anonymous"></script>
+    
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+
+  <div class="container">
+  <!-- Formulario de la farmacia (registro) -->
+<form class="text-center border border-light p-5" action="#!">
+
+    <p class="h4 mb-4">Quiero tener Farma-Fast en mi farmacia</p>
+    <!-- Datos de la farmacia -->
+    <p><strong>Datos de la farmacia</strong></p>
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- Nombre de la farmacia -->
+            <input type="text" id="defaultRegisterFormNombreFarm" class="form-control" placeholder="Nombre de la farmacia">
+        </div>
+        <div class="col">
+            <!-- Dirección de la farmacia -->
+            <input type="text" id="defaultRegisterFormDireFarm" class="form-control" placeholder="Dirección de la farmacia">
+        </div>
+    </div>
+    <div class="form-row mb-4">
+        <div class="col-6">
+            <!-- Razón social -->
+            <input type="text" id="defaultRegisterFormRazonSocial" class="form-control" placeholder="Razón social">
+        </div>
+        <div class="col-3">
+            <!-- Provincia -->
+            <input type="text" id="defaultRegisterFormProvincia" class="form-control" placeholder="Provincia">
+        </div>
+        <div class="col-3">
+            <!-- Localidad -->
+            <input type="text" id="defaultRegisterFormLocalidad" class="form-control" placeholder="Localidad">
+        </div>
+    </div>
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- Teléfono de la farmacia -->
+            <input type="text" id="defaultRegisterFormTelFarm" class="form-control" placeholder="Teléfono de la farmacia">
+        </div>
+        <div class="col">
+            <!-- Mail de la farmacia -->
+            <input type="text" id="defaultRegisterFormMailFarm" class="form-control" placeholder="Mail de la farmacia">
+        </div>
+    </div>
+    <!-- Datos de contacto -->
+    <p><strong>Datos de contacto</strong></p>
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- Nombre de contacto -->
+            <input type="text" id="defaultRegisterFormNombreCont" class="form-control" placeholder="Nombre de contacto">
+        </div>
+        <div class="col">
+            <!-- Mail de contacto -->
+            <input type="text" id="defaultRegisterForMailCont" class="form-control" placeholder="Mail de contacto">
+        </div>
+    </div>
+
+    <!-- Comentario -->
+    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Comentario">
+
+    <!-- Términos y condiciones -->
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+        <label class="custom-control-label" for="defaultRegisterFormNewsletter">Acepto los <a href="" data-toggle="modal" data-target="#">términos y condiciones</a></label>
+    </div>
+
+    <!-- Enviar solicitud button -->
+                <div>
+                  <a href="elegirFarmacia.html" class="btn btn-info btn-block my-4" data-toggle="modal" data-target="#solicitudEnviada">Enviar solicitud</a>
+                </div>
+    <hr>
+
+</form>
+<!-- Se envió la solicitud con éxito -->
+<div class="modal fade" id="solicitudEnviada" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Se envió la solicitud con éxito</h4>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p style="margin-right: 20px; margin-left: 20px; text-align: center;">Pronto nos pondremos en contacto</p>
+    </div>
+  </div>
+</div>
+<!-- Fin del formulario -->
+  </div>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+
+  
+  <script src="js/main.js"></script>
+  
+  </body>
+</html>

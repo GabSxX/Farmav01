@@ -145,4 +145,32 @@ $(document).ready(function(){
       });
       e.preventDefault();
     });
+
+    $('#cliente').submit(e=>{
+      let PER_NOMBRE = $('#PER_NOMBRE').val();
+      let PER_APELLIDO = $('#PER_APELLIDO').val();
+      let PER_FECHA_NACIMIENTO = $('#PER_FECHA_NACIMIENTO').val();
+      let PER_EMAIL = $('#PER_EMAIL').val();
+      let PER_USERNAME = $('#PER_USERNAME').val();
+      let PER_PASSWORD = $('#PER_PASSWORD').val();
+      let autom = $('#autom').val();
+      funcion='cliente';
+      $.post('../Controlador/usuario_controller.php',{PER_NOMBRE,PER_APELLIDO,PER_FECHA_NACIMIENTO,PER_EMAIL,PER_USERNAME,PER_PASSWORD,autom,funcion},(response)=>{
+        console.log(response);
+        if(response=='add') {
+          $('#add').hide('slow');
+          $('#add').show(1000);
+          $('#add').hide(2000);
+          $('#cliente').trigger('reset');
+        }
+        else{
+       $('#noadd').hide('slow');
+       $('#noadd').show(2000);
+       $('#noadd').hide(5000);
+       $('#cliente').trigger('reset');
+      }
+  });
+      e.preventDefault();
+   });
+
 })

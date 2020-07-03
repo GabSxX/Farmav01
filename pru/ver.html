@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" tipe="text/css"href="style.css">
+</head>
+    <body translate="no">
+<main>
+<h1 class="title">Promociones</h1>
+<div class="scroll-wrapper">
+<div class="scroll-filler" style="width: 1320px;"></div>
+<div class="scroll" style="transform: translate(-300px, 0px);">
+<div class="scroll-inner">
+<a href="#" class="scroll-item" style="transform: perspective(400px) translate3d(0px, 0px, 35px) rotateY(58.3333deg);">
+<h2>Grupo 1</h2>
+<span class="scroll-item-date">29 Jun 2020</span>
+</a>
+<a href="#" class="scroll-item red" style="transform: perspective(400px) translate3d(0px, 0px, 19px) rotateY(31.6667deg);">
+<h2>Grupo 1</h2>
+<span class="scroll-item-date">29 Jun 2020</span>
+</a>
+<a href="#" class="scroll-item" style="transform: perspective(400px) translate3d(0px, 0px, 3px) rotateY(5deg);">
+<h2>Grupo 1</h2>
+<span class="scroll-item-date">29 Jun 2020</span>
+</a>
+<a href="#" class="scroll-item bees" style="transform: perspective(400px) translate3d(0px, 0px, 13px) rotateY(-21.6667deg);">
+<h2>Grupo 1</h2>
+<span class="scroll-item-date">bees</span>
+</a>
+<a href="#" class="scroll-item red" style="transform: perspective(400px) translate3d(0px, 0px, 29px) rotateY(-48.3333deg);">
+<h2>Grupo 1</h2>
+<span class="scroll-item-date">29 Jun 2020</span>
+</a>
+<a href="#" class="scroll-item" style="transform: perspective(400px) translate3d(0px, 0px, 45px) rotateY(-75deg);">
+<h2>Grupo 1</h2>
+<span class="scroll-item-date">29 Jun 2020</span>
+</a>
+<a href="#" class="scroll-item blue" style="transform: perspective(400px) translate3d(0px, 0px, 61px) rotateY(-101.667deg);">
+<h2>Grupo 1</h2>
+<span class="scroll-item-date">29 Jun 2020</span>
+</a>
+<div class="scroll-item ghost" style="transform: perspective(400px) translate3d(0px, 0px, 77px) rotateY(-128.333deg);">
+<h2>No more items</h2>
+<span class="scroll-item-date">29 Jun 2020</span>
+</div>
+</div>
+</div>
+</div>
+<div class="scroll-position-wrapper">
+<button class="scroll-btn prev" onclick="prevBtn()"></button>
+<div class="scroll-position">
+<div class="scroll-position-inner" style="width: 22.7273%; transform: translate(100%, 0px);"></div>
+</div>
+<button class="scroll-btn next" onclick="nextBtn()"></button>
+</div>
+<div class="info">
+
+</div>
+<footer>
+<a href="#" target="_blank">Grupo 1</a>
+</footer>
+</main>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js"></script>
+<script id="rendered-js">
+const wrapper = document.querySelector('.scroll-wrapper');
+const el = document.querySelector('.scroll');
+const filler = document.querySelector('.scroll-filler');
+const position = document.querySelector('.scroll-position-inner');
+const inner = document.querySelector('.scroll-inner');
+const btns = { prev: document.querySelector('.scroll-btn.prev'), next: document.querySelector('.scroll-btn.next') };
+
+const lerp = (a, b, n) => {
+  return (1 - n) * a + n * b;
+};
+
+const padding = 20;
+
+let scrollNow = 0;
+
+filler.style.width = inner.offsetWidth + padding * 2 + 'px';
+position.style.width = wrapper.offsetWidth / (inner.offsetWidth + padding * 2) * 100 + '%';
+
+const offset = 150;
+const angle = 25;
+const z = 15;
+
+function render() {
+  let now = lerp(scrollNow, wrapper.scrollLeft, .15);
+  gsap.set(el, { x: -now });
+  gsap.set(position, { x: now / wrapper.offsetWidth * 100 + '%' });
+
+  document.querySelectorAll('.scroll-item').forEach(item => {
+    let elPos = item.offsetLeft + item.offsetWidth / 2 - scrollNow;
+
+    if (elPos > wrapper.offsetWidth - offset) {
+      let q = (wrapper.offsetWidth - elPos) / offset;
+      gsap.set(item, { rotateY: -(angle - q * angle), z: z - z * q });
+    } else if (elPos < offset) {
+      let q = elPos / offset;
+      gsap.set(item, { rotateY: angle - q * angle, z: z - z * q });
+    } else {
+      gsap.set(item, { rotateY: 0, z: 0 });
+    }
+  });
+
+  scrollNow = now;
+
+  if (wrapper.scrollLeft === 0) btns.prev.disabled = true;else
+  if (inner.offsetWidth - wrapper.scrollLeft === wrapper.offsetWidth - padding * 2) btns.next.disabled = true;else
+  {btns.prev.disabled = false;btns.next.disabled = false;}
+  requestAnimationFrame(render);
+}
+
+render();
+
+function nextBtn() {
+  wrapper.scrollLeft += document.querySelector('.scroll-item').offsetWidth * 2 - 20;
+}
+function prevBtn() {
+  wrapper.scrollLeft -= document.querySelector('.scroll-item').offsetWidth * 2 - 20;
+}
+//# sourceURL=pen.js
+    </script>
+
+
+</body>
+</body>
+</html>
