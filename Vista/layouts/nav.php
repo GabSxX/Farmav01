@@ -147,6 +147,16 @@
                </a>
              </li>
 
+             <li class="nav-item">
+               <a href="http://localhost:3000/" class="nav-link">
+                 <i class="nav-icon fas fa-envelope"></i>
+                 <p>
+                   Mensajes
+                 </p>
+               </a>
+             </li>
+
+
         <li class="nav-header">EXAMPLES</li>
 
         <li class="nav-item">

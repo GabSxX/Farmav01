@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Chat</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s8 offset-s2">
+                <input type="text" id="nombre">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-title">
+                            <p class="center-align">Farma-Chat</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="nuevo_mensaje" class="col s10 offset-s1 scroll">
+
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <div class="row">
+                            <div class="col s9">
+                                <div class="input-field">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="mensaje" class="materialize-textarea"></textarea>
+                                    <label for="mensaje">Mensaje</label>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="input-field">
+                                    <button class="btn btn-outline-secondary" type="button" id="enviar">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
